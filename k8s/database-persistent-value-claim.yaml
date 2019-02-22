@@ -1,0 +1,13 @@
+apiVersion: v1
+#it is not an actual instance of storage
+#kubernetes have to find a storage 
+kind: PersistentVolumeClaim
+metadata:
+  name: database-persistent-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+    # at least 2gb of space
+      storage: 2Gi
