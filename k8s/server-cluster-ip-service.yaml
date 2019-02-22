@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-cluster-ip-service
+spec:
+  type: ClusterIP
+  # what set of pods it is providing access to this case: serviceclusterip
+  selector: 
+    component: server
+  ports: 
+      # how other pods inside a cluster are going to access to (in)
+    - port: 5000
+    # port on th target pod we are goung to access to (out)
+    # could be different
+      targetPort: 5000
+# it is possible to merger this configs with ---
+# ---
+# here would start next config
