@@ -1,4 +1,5 @@
 kubectl apply -f filename
+
 kubectl get pods
 kubectl get services
 minikube ip, do not use localhost
