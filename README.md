@@ -1,4 +1,4 @@
-#Kuick notes during the course
+#Kuick notes during the course#
 
 * kubectl apply -f filename
 * kubectl get pods
