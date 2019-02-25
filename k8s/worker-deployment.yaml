@@ -15,4 +15,12 @@ spec:
       containers:
         - name: worker
           image: vitkoczi/multi-worker
-#          ports: no ports required as noone connects to it
+#         ports: no ports required as noone connects to it
+          env:
+          #name of the cluster ip service that the worker needs to connect to, to get the reddis pod
+            - name: REDIS_HOST
+              # see server-cluster-ip-service.yaml
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: '6379'
+              
