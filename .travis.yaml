@@ -15,4 +15,8 @@ before_install:
   # set zone what has been selected during creation of kubernetes cluster
   - gcloud config set compute/zone europe-west1-b
   - gcloud container clusters get-credentials multi-docker-cluster
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t vitkoczi/react-test-for-k8s -f ./client/Dockerfile.dev ./client
+  
+  script:
+    - docker run vitkoczi/react-test-for-k8s npm test -- --coverage
