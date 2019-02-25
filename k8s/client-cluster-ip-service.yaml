@@ -1,15 +1,18 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: client-cluster-ip-service
+  name: reddis-cluster-ip-service
 spec:
   type: ClusterIP
-  # what set of pods it is providing access to
+  # what set of pods it is providing access to this case: serviceclusterip
   selector: 
-    component: web
+    component: reddis
   ports: 
       # how other pods inside a cluster are going to access to (in)
-    - port: 3000
+    - port: 6379
     # port on th target pod we are goung to access to (out)
     # could be different
-      targetPort: 3000
+      targetPort: 6379
+# it is possible to merger this configs with ---
+# ---
+# here would start next config
