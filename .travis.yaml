@@ -10,4 +10,8 @@ before_install:
   - gcloud components update kubectl
   # Authorization
   - gcloud auth activate-service-account --key-file service-account.json
-  
+  # not name but id
+  - gcloud config set project multi-docker-kubernetes
+  # set zone what has been selected during creation of kubernetes cluster
+  - gcloud config set compute/zone europe-west1-b
+  - gcloud container clusters get-credentials multi-docker-cluster
