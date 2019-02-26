@@ -20,3 +20,9 @@ before_install:
   
   script:
     - docker run vitkoczi/react-test-for-k8s npm test -- --coverage
+
+  deploy:
+    provider: script
+    script: bash ./deploy.sh
+    on:
+      branch: master
