@@ -1,0 +1,23 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: k8s-multi-com-tls
+spec: 
+#name of this cert
+  secretName: k9s-multi-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  #vitkoczi.hu
+  commonName: k8s-multi.com
+  # your domain names these adresses are covered by certificate
+  dnsNames:
+    - k8s-multi.com
+    - www.k8s-multi.com
+  acme:
+    config:
+      - http01:
+        ingressClass: nginx
+        domains:
+          - k8s-multi.com
+          - www.k8s-multi.com
